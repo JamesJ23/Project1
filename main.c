@@ -2,7 +2,10 @@
 
 int main()
 {
-    aaaa
-    aaaaaaaaa
+   int a,b,c;
+   scanf("%d %d %d", &a, &b, &c);
+   printf("found int %d %d %d\n", a, b, c);
+    
+    
     return 0;
 }
