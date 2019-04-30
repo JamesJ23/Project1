@@ -8,12 +8,12 @@ void Rotationcipher1(char *message, int key); //function to perform a encryption
 void Rotationcipher2(char *message, int key); //function to perform a decryption on a word//
 int main()
 {
-    char message[] ="IFMMP UIFSF ZPV"; //text must be entered manually//
+    char message[] ="MON MOTHMA: THE DATA BROUGHT TO US BY THE BOTHAN SPIES PINPOINTS THE EXACT LOCATION OF THE EMPERORSNEW BATTLE STATION.WE ALSO KNOW THAT THE WEAPON SYSTEMS OF THIS DEATH STAR ARE NOT YET OPERATIONAL. WITH THE IMPERIAL FLEET SPREAD THROUGHOUT THE GALAXY IN A VAIN EFFORT TO ENGAGE US IT IS RELATIVELY UNPROTECTED. BUT MOST IMPORTANT OF ALL WEVE LEARNED THAT THE EMPEROR HIMSELF IS PERSONALLY OVERSEEING THE FINAL STAGES OF THE CONSTRUCTION OF THIS DEATH STAR. MANY BOTHANS DIED TO BRING US THIS INFORMATION."; //text must be entered manually//
     int key = 0;
     int task = 5;
     while((task < 1) || task > 5);
     printf("please enter task number\n");
-    printf("task 1: Encrypts with rotation cipher\n");
+    printf("task 1: Encrypt with rotation cipher\n");
     printf("task 2: Decrypt with rotation cipher\n");
     printf("task 3: Encrypt with substitution cipher\n");
     printf("task 4: Decrypt with substitution cipher\n");    
@@ -58,14 +58,20 @@ void Rotationcipher1(char *message, int key) {
     char WordSum;
     
     while(message[index] != '\0' && stringlength(message) > index){
-        if(message[index] != ' '){
+        if(((int)message[index]) == 58){
+            printf(":");
+        }
+        if(message[index] == ' '){
+            printf(" ");
+        }
+        if(((int)message[index]) == 46){
+            printf(".");
+        }
+        
+        if(((int)message[index]) >= 65 && ((int)message[index]) <= 90){
             LetterValue = ((((int)message[index])-65 + key) % 26) +65;
             char WordSum = (char)(LetterValue);
             printf("%c", WordSum);
-        }
-        
-        else{
-            printf(" ");
         }
         
         index++;
@@ -79,14 +85,20 @@ void Rotationcipher2(char *message, int key) {
     char WordSum;
     
     while(message[index] != '\0' && stringlength(message) > index){
-        if(message[index] != ' '){
-            LetterValue = ((((int)message[index])-65 - key) % 26) +65;
-            char WordSum = (char)(LetterValue);
-            printf("%c", WordSum);
+        if(((int)message[index]) == 58){
+            printf(":");
+        }
+        if(message[index] == ' '){
+            printf(" ");
+        }
+        if(((int)message[index]) == 46){
+            printf(".");
         }
         
-        else{
-            printf(" ");
+        if(((int)message[index]) >= 65 && ((int)message[index]) <= 90){
+            LetterValue = ((((int)message[index])-90 - key) % 26) +90;
+            char WordSum = (char)(LetterValue);
+            printf("%c", WordSum);
         }
         
         index++;
