@@ -11,7 +11,7 @@ void Substitutioncipher1(char *message, char *Substitution);
 int main()
 {
     char message[] ="HELLO. THERE: JAMES"; //text must be entered manually//
-    char Substitution[] = "KEIJUTVHPSNCFAMWGDXQZYBROL"; //key for example on blackboard//
+    char Substitution[26] = "KEIJUTVHPSNCFAMWGDXQZYBROL"; //key for example on blackboard//
     int key = 0;
     int task = 5;
     while((task < 1) || task > 5);
@@ -128,7 +128,8 @@ void Substitutioncipher1(char *message, char *Substitution){
         }
         
         if(((int)message[index]) >= 65 && ((int)message[index]) <= 90){
-            LetterValue = (((int)message[index])-90 - ((int)(Substitution[index])) % 26) +90;
+            int index2 = (((int)message[index])-65);    //get values of letters from 1-26 from message//
+            LetterValue = (int)(Substitution[index2]);  //sub values into substitution array and pull letter value out//
             char WordSum = (char)(LetterValue);
             printf("%c", WordSum);
         }
