@@ -6,14 +6,17 @@
 int stringlength(char *message); //function to find length of a string to process only the text //
 void Rotationcipher1(char *message, int key); //function to perform a encryption on a word//
 void Rotationcipher2(char *message, int key); //function to perform a decryption on a word//
+void Substitutioncipher1(char *message, char *Substitution);
+
 int main()
 {
-    char message[] ="MON MOTHMA: THE DATA BROUGHT TO US BY THE BOTHAN SPIES PINPOINTS THE EXACT LOCATION OF THE EMPERORSNEW BATTLE STATION.WE ALSO KNOW THAT THE WEAPON SYSTEMS OF THIS DEATH STAR ARE NOT YET OPERATIONAL. WITH THE IMPERIAL FLEET SPREAD THROUGHOUT THE GALAXY IN A VAIN EFFORT TO ENGAGE US IT IS RELATIVELY UNPROTECTED. BUT MOST IMPORTANT OF ALL WEVE LEARNED THAT THE EMPEROR HIMSELF IS PERSONALLY OVERSEEING THE FINAL STAGES OF THE CONSTRUCTION OF THIS DEATH STAR. MANY BOTHANS DIED TO BRING US THIS INFORMATION."; //text must be entered manually//
+    char message[] ="HELLO. THERE: JAMES"; //text must be entered manually//
+    char Substitution[] = "KEIJUTVHPSNCFAMWGDXQZYBROL"; //key for example on blackboard//
     int key = 0;
     int task = 5;
     while((task < 1) || task > 5);
     printf("please enter task number\n");
-    printf("task 1: Encrypt with rotation cipher\n");
+    printf("task 1: Encrypts with rotation cipher\n");
     printf("task 2: Decrypt with rotation cipher\n");
     printf("task 3: Encrypt with substitution cipher\n");
     printf("task 4: Decrypt with substitution cipher\n");    
@@ -33,7 +36,10 @@ int main()
         printf(" the encryption reads: ");
         Rotationcipher2(message, key); 
         break;
-        case 3:
+        case 3: printf("task 3:Encryption/Substitution selected\n");
+        printf(" message: %s \n was Encrypted with a Subkey of: %s\n", message, Substitution);
+        printf(" the encryption reads: ");
+        Substitutioncipher1(message, Substitution); 
         break;
         case 4:
         break;
@@ -105,6 +111,33 @@ void Rotationcipher2(char *message, int key) {
 }
     printf("\n");
 }
+
+void Substitutioncipher1(char *message, char *Substitution){
+    int index=0;
+    int LetterValue;
+    char WordSum;
+        while(message[index] != '\0' && stringlength(message) > index){
+        if(((int)message[index]) == 58){
+            printf(":");
+        }
+        if(message[index] == ' '){
+            printf(" ");
+        }
+        if(((int)message[index]) == 46){
+            printf(".");
+        }
+        
+        if(((int)message[index]) >= 65 && ((int)message[index]) <= 90){
+            LetterValue = (((int)message[index])-90 - ((int)(Substitution[index])) % 26) +90;
+            char WordSum = (char)(LetterValue);
+            printf("%c", WordSum);
+        }
+        
+        index++;
+}
+    printf("\n");
+}
+
 
 
 
