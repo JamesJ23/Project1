@@ -106,6 +106,6 @@ void Rotationcipher2(char *message, int key) {
     printf("\n");
 }
 
-    
+
 
 
