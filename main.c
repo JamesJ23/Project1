@@ -1,6 +1,7 @@
 /* This C program will Encrypt and decrypt words given to it using the rotation cipher and
     substitution cipher methods. a series of functions will be used to achieve this. 
-    choosing between tasks will be done by entering in a intial variable.
+    choosing between tasks will be done by entering in a intial variable. 
+    Enter in Task number in terminal(after /.a.out) and hard code the message and/or substitution. they key is typed.
  */
 #include <stdio.h>
 int stringlength(char *message); //function to find length of a string to process only the text //
@@ -11,7 +12,7 @@ void Substitutioncipher2(char *message, char *Substitution);
 
 int main()
 {
-    char message[] ="HUCCM. QHUDU: SKFUX"; //text must be entered manually//
+    char message[] ="IFMMP UIFSF"; //text must be entered manually//
     char Substitution[26] = "KEIJUTVHPSNCFAMWGDXQZYBROL"; //key for example on blackboard//
     int key = 0;
     int task = 5;
@@ -67,8 +68,8 @@ void Rotationcipher1(char *message, int key) {
     int LetterValue;
     char WordSum;
     
-    while(message[index] != '\0' && stringlength(message) > index){
-        if(((int)message[index]) == 58){
+    while(message[index] != '\0' && stringlength(message) > index){ 
+        if(((int)message[index]) == 58){    //the program skips symbols//
             printf(":");
         }
         if(message[index] == ' '){
@@ -160,11 +161,11 @@ void Substitutioncipher2(char *message, char *Substitution){
         }
         
         if(((int)message[index]) >= 65 && ((int)message[index]) <= 90){
-            LetterValue = ((int)(message[index])-65);  //
-            for (int count = 0; count < 27; count++){
-                if (LetterValue == ((int)(Substitution[count])-65)){
+            LetterValue = ((int)(message[index])-65);  //get numbervalue of letters 1-26//
+            for (int count = 0; count < 27; count++){   //loop to test what value matches what position in the key//
+                if (LetterValue == ((int)(Substitution[count])-65)){    
                 Number = count;
-                }
+                } //when value matches the recorded position(count) is used to output the letter//
             }
             char WordSum = (char)((Number)+65);
             printf("%c", WordSum);
