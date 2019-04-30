@@ -11,14 +11,14 @@ void Substitutioncipher2(char *message, char *Substitution);
 
 int main()
 {
-    char message[] ="HELLO. THERE: JAMES"; //text must be entered manually//
+    char message[] ="HUCCM. QHUDU: SKFUX"; //text must be entered manually//
     char Substitution[26] = "KEIJUTVHPSNCFAMWGDXQZYBROL"; //key for example on blackboard//
     int key = 0;
     int task = 5;
     while((task < 1) || task > 5);
     printf("please enter task number\n");
     printf("task 1: Encrypt with rotation cipher\n");
-    printf("task 2: Decrypt with rotation cipher\n");
+    printf("task 2: Decrypt with rotation cipher\n"); 
     printf("task 3: Encrypt with substitution cipher\n");
     printf("task 4: Decrypt with substitution cipher\n");    
     scanf("%d", &task);
@@ -146,6 +146,7 @@ void Substitutioncipher1(char *message, char *Substitution){
 void Substitutioncipher2(char *message, char *Substitution){
     int index=0;
     int LetterValue;
+    int Number;
     char WordSum;
         while(message[index] != '\0' && stringlength(message) > index){
         if(((int)message[index]) == 58){
@@ -159,16 +160,22 @@ void Substitutioncipher2(char *message, char *Substitution){
         }
         
         if(((int)message[index]) >= 65 && ((int)message[index]) <= 90){
-            int index2 = (((int)message[index])-65);    
-            LetterValue = (int)(Substitution[index2]);  
-            char WordSum = (char)(LetterValue);
+            LetterValue = ((int)(message[index])-65);  //
+            for (int count = 0; count < 27; count++){
+                if (LetterValue == ((int)(Substitution[count])-65)){
+                Number = count;
+                }
+            }
+            char WordSum = (char)((Number)+65);
             printf("%c", WordSum);
-        }
+        
+    }
         
         index++;
 }
     printf("\n");
 }
+
 
 
 
